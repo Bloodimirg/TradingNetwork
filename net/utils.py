@@ -6,6 +6,7 @@ def save_supplier(instance, *args, **kwargs):
         instance.level = calculate_hierarchy_level(instance.supplier)
     super(instance.__class__, instance).save(*args, **kwargs)
 
+
 def calculate_hierarchy_level(supplier):
     """
     Вычисляет уровень иерархии для текущего звена сети.
@@ -13,3 +14,10 @@ def calculate_hierarchy_level(supplier):
     if supplier is None:
         return 0  # Завод (LEVEL)
     return supplier.level + 1
+
+
+def get_supplier_link(supplier):
+    """
+    Генерирует ссылку на объект поставщика.
+    """
+    return f'<a href="/admin/net/supplier/{supplier.id}/">{supplier.name}</a>'
