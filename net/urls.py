@@ -1,11 +1,11 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from net.views import AdViewSet, ReviewViewSet
+from net.views import SupplierViewSet, ProductViewSet
 
 router = DefaultRouter()
-router.register(r"ad", AdViewSet, basename="ad")  # Маршрут для объявлений
-router.register(r"review", ReviewViewSet, basename="review")  # Маршрут для комментариев
+router.register(r"supplier", SupplierViewSet, basename="supplier")
+router.register(r"product", ProductViewSet, basename="product")
 
 app_name = "net"
 urlpatterns = [
